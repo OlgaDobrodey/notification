@@ -17,11 +17,17 @@ public class Notification {
                 .endAt((dateOf(22,0,0)))
                 .build();
 
+        Trigger testtrigger = TriggerBuilder.newTrigger()
+                .withSchedule(
+                        SimpleScheduleBuilder.simpleSchedule()
+                                .withIntervalInSeconds(5).repeatForever())
+                .build();
 
 
         SchedulerFactory schFactory = new StdSchedulerFactory();
         Scheduler sch = schFactory.getScheduler();
-        sch.scheduleJob(notificationTeamLead, trigger);
+        //sch.scheduleJob(notificationTeamLead, trigger);
+        sch.scheduleJob(notificationTeamLead, testtrigger);
         sch.start();
     }
 }
