@@ -3,12 +3,11 @@ import org.quartz.JobExecutionContext;
 import services.DummyRouter;
 import services.Router;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class SendNotification implements Job {
 
-    private Router router;
+    private final Router router;
 
     public SendNotification() {
         this.router = new DummyRouter();
@@ -30,9 +29,9 @@ public class SendNotification implements Job {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (String b : untrackedUser) {
-            stringBuilder.append(b).append(",");
+            stringBuilder.append(b).append(", ");
         }
-        stringBuilder.append(" не трекались сегодня ");
+        stringBuilder.append("не трекались сегодня ");
 
         for (String a : admin) {
             router.notifyUser(a, stringBuilder.toString());
@@ -49,9 +48,9 @@ public class SendNotification implements Job {
         StringBuilder stringBuilder = new StringBuilder();
 
         for (String b : untrackthreedays) {
-            stringBuilder.append(b).append(",");
+            stringBuilder.append(b).append(", ");
         }
-        stringBuilder.append(" не трекались 3 дня ");
+            stringBuilder.append("не трекались 3 дня");
 
         for (String a : lektor) {
             router.notifyUser(a, stringBuilder.toString());

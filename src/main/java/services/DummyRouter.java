@@ -14,7 +14,7 @@ public class DummyRouter implements Router{
 
     @Override
     public List<String> getAdmins() {
-        List adminsList = new ArrayList<>();
+        List<String > adminsList = new ArrayList<>();
         adminsList.add("admin");
         adminsList.add("admin2");
         return adminsList;
@@ -22,7 +22,7 @@ public class DummyRouter implements Router{
 
     @Override
     public List<String> getLecturers() {
-        List lecturers = new ArrayList();
+        List<String > lecturers = new ArrayList<>();
         lecturers.add("Lektor");
         lecturers.add("Lektor2");
         return lecturers;
@@ -30,17 +30,17 @@ public class DummyRouter implements Router{
 
     @Override
     public List<String> getThreeDaysNotTrackingUsers() {
-        List untracked = new ArrayList();
-        untracked.add("Тема");
-        untracked.add("Игорь");
-        return untracked;
+        List<String> untrackedThreeDays = new ArrayList<>();
+        untrackedThreeDays.add("Тема");
+        untrackedThreeDays.add("Игорь");
+        return untrackedThreeDays;
     }
 
     @Override
     public List<String> getOneDaysNotTrackingUsers() {
-        List fullUntracked = new ArrayList();
-        fullUntracked.add("Петя");
-        fullUntracked.add("Вася");
-        return fullUntracked;
+        List<String > untrackedOneDay = new ArrayList<>();
+        //untrackedOneDay.add("Петя");
+        untrackedOneDay.add("Вася");
+        return untrackedOneDay;
     }
 }
