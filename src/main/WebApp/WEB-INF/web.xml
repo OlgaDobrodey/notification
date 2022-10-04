@@ -6,12 +6,12 @@
 
     <!--Index page for app-->
     <servlet-mapping>
-        <servlet-name>ContextListener</servlet-name>
+        <servlet-name>IndexPage</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>ContextListener</servlet-name>
-        <servlet-class>ContextListener</servlet-class>
+        <servlet-name>IndexPage</servlet-name>
+        <servlet-class>IndexPage</servlet-class>
     </servlet>
 </web-app>

@@ -39,7 +39,7 @@ public class DummyRouter implements Router{
     @Override
     public List<String> getOneDaysNotTrackingUsers() {
         List<String > untrackedOneDay = new ArrayList<>();
-        //untrackedOneDay.add("Петя");
+        untrackedOneDay.add("Петя");
         untrackedOneDay.add("Вася");
         return untrackedOneDay;
     }

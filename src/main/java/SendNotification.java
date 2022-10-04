@@ -7,7 +7,8 @@ import java.util.List;
 
 public class SendNotification implements Job {
 
-    private final Router router;
+
+    private Router router;
 
     public SendNotification() {
         this.router = new DummyRouter();
@@ -35,6 +36,7 @@ public class SendNotification implements Job {
 
         for (String a : admin) {
             router.notifyUser(a, stringBuilder.toString());
+
         }
     }
     private void sendToLektor() {

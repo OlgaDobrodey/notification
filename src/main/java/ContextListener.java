@@ -9,13 +9,13 @@ import static org.quartz.DateBuilder.dateOf;
 
 public class ContextListener implements ServletContextListener {
 
-    JobDetail notification;
+    Scheduler sch;
 
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         final ServletContext servletContext = sce.getServletContext();
 
-        notification = JobBuilder.newJob(SendNotification.class)
+        JobDetail notification = JobBuilder.newJob(SendNotification.class)
                 .withIdentity("Notification")
                 .build();
 
@@ -27,26 +27,25 @@ public class ContextListener implements ServletContextListener {
                 .build();
 
         SchedulerFactory schFactory = new StdSchedulerFactory();
-        Scheduler sch;
+
         try {
             sch = schFactory.getScheduler();
-        } catch (SchedulerException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             sch.scheduleJob(notification, trigger);
-        } catch (SchedulerException e) {
-            throw new RuntimeException(e);
-        }
-        try {
             sch.start();
         } catch (SchedulerException e) {
             throw new RuntimeException(e);
         }
+
     }
 
     @Override
     public void contextDestroyed(ServletContextEvent sce) {
-            System.exit(0);
+        if (sch != null) {
+            try {
+                sch.shutdown();
+            } catch (SchedulerException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 }
