@@ -6,7 +6,11 @@ import static org.quartz.DateBuilder.dateOf;
 public class Notification {
 
     public static void main(String[] args) throws SchedulerException {
-        JobDetail notificationTeamLead = JobBuilder.newJob(NotificationToTeamLead.class)
+
+        SendNotification sendNotification = new SendNotification();
+        sendNotification.execute(null);
+
+        JobDetail notificationTeamLead = JobBuilder.newJob(SendNotification.class)
                 .withIdentity("TeamLead Notification")
                 .build();
 
@@ -17,17 +21,9 @@ public class Notification {
                 .endAt((dateOf(22,0,0)))
                 .build();
 
-        Trigger testtrigger = TriggerBuilder.newTrigger()
-                .withSchedule(
-                        SimpleScheduleBuilder.simpleSchedule()
-                                .withIntervalInSeconds(5).repeatForever())
-                .build();
-
-
         SchedulerFactory schFactory = new StdSchedulerFactory();
         Scheduler sch = schFactory.getScheduler();
-        //sch.scheduleJob(notificationTeamLead, trigger);
-        sch.scheduleJob(notificationTeamLead, testtrigger);
+        sch.scheduleJob(notificationTeamLead, trigger);
         sch.start();
     }
 }
