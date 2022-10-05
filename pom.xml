@@ -95,7 +95,7 @@
                 <version>2.3.2</version>
                 <configuration>
                     <wsdlUrls>
-                        <wsdlUrl>http://localhost:8080/wss/first?wsdl</wsdlUrl>
+                        <wsdlUrl>http://localhost:8081/wss/first?wsdl</wsdlUrl>
                     </wsdlUrls>
                     <keep>true</keep>
                     <packageName>com.example.generate</packageName>
