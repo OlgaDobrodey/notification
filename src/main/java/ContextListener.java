@@ -24,8 +24,9 @@ public class ContextListener implements ServletContextListener {
         Trigger trigger = TriggerBuilder.newTrigger()
                 .withSchedule(
                         SimpleScheduleBuilder.simpleSchedule()
-                                .withIntervalInHours(24)).startAt(dateOf(22,0,0))
-                .endAt((dateOf(22,0,5)))
+                                .withIntervalInSeconds(60))
+                                /*.withIntervalInHours(24)).startAt(dateOf(22,0,0))
+                .endAt((dateOf(22,0,5)))*/
                 .build();
 
         SchedulerFactory schFactory = new StdSchedulerFactory();

@@ -1,7 +1,7 @@
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
-import services.DummyRouter;
 import services.Router;
+import services.ServerRouter;
 
 import java.util.List;
 
@@ -9,14 +9,15 @@ public class SendNotification implements Job {
 
     private Router router;
 
-    public SendNotification() {
-        this.router = new DummyRouter();
+    public SendNotification()  {
+        this.router = new ServerRouter();
     }
 
     @Override
     public void execute(JobExecutionContext jobExecutionContext) {
         sendToTeamLead();
         sendToLektor();
+        System.out.println("ВЫПОЛНИЛОСЬ");
     }
 
     private void sendToTeamLead() {

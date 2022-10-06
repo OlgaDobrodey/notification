@@ -1,7 +1,10 @@
 
 package com.example.generate;
 
+import javax.xml.bind.JAXBElement;
+import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
+import javax.xml.namespace.QName;
 
 
 /**
@@ -21,12 +24,45 @@ import javax.xml.bind.annotation.XmlRegistry;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _IOException_QNAME = new QName("http://sender.server.dobrodey.ru/", "IOException");
 
     /**
      * Create a new ObjectFactory that can be used to create new instances of schema derived classes for package: com.example.generate
      * 
      */
     public ObjectFactory() {
+    }
+
+    /**
+     * Create an instance of {@link IOException }
+     * 
+     */
+    public IOException createIOException() {
+        return new IOException();
+    }
+
+    /**
+     * Create an instance of {@link ListOfString }
+     * 
+     */
+    public ListOfString createListOfString() {
+        return new ListOfString();
+    }
+
+    /**
+     * Create an instance of {@link ReportSender }
+     * 
+     */
+    public ReportSender createReportSender() {
+        return new ReportSender();
+    }
+
+    /**
+     * Create an instance of {@link ListOfReportSender }
+     * 
+     */
+    public ListOfReportSender createListOfReportSender() {
+        return new ListOfReportSender();
     }
 
     /**
@@ -38,11 +74,16 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link ListOfString }
+     * Create an instance of {@link JAXBElement }{@code <}{@link IOException }{@code >}
      * 
+     * @param value
+     *     Java instance representing xml element's value.
+     * @return
+     *     the new instance of {@link JAXBElement }{@code <}{@link IOException }{@code >}
      */
-    public ListOfString createListOfString() {
-        return new ListOfString();
+    @XmlElementDecl(namespace = "http://sender.server.dobrodey.ru/", name = "IOException")
+    public JAXBElement<IOException> createIOException(IOException value) {
+        return new JAXBElement<IOException>(_IOException_QNAME, IOException.class, null, value);
     }
 
 }

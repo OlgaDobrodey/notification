@@ -14,4 +14,8 @@
         <servlet-name>IndexPage</servlet-name>
         <servlet-class>IndexPage</servlet-class>
     </servlet>
+
+    <listener>
+        <listener-class>ContextListener</listener-class>
+    </listener>
 </web-app>

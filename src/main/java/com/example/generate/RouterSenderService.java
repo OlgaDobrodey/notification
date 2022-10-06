@@ -8,6 +8,7 @@ import javax.jws.WebService;
 import javax.jws.soap.SOAPBinding;
 import javax.xml.bind.annotation.XmlSeeAlso;
 import javax.xml.ws.Action;
+import javax.xml.ws.FaultAction;
 
 
 /**
@@ -76,5 +77,46 @@ public interface RouterSenderService {
     @WebResult(partName = "return")
     @Action(input = "http://sender.server.dobrodey.ru/RouterSenderService/getOneDaysNotTrackingUsersRequest", output = "http://sender.server.dobrodey.ru/RouterSenderService/getOneDaysNotTrackingUsersResponse")
     public ListOfString getOneDaysNotTrackingUsers();
+
+    /**
+     * 
+     * @return
+     *     returns com.example.generate.ListOfReportSender
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://sender.server.dobrodey.ru/RouterSenderService/getReportsTodayRequest", output = "http://sender.server.dobrodey.ru/RouterSenderService/getReportsTodayResponse")
+    public ListOfReportSender getReportsToday();
+
+    /**
+     * 
+     * @param arg0
+     * @return
+     *     returns com.example.generate.ListOfString
+     */
+    @WebMethod
+    @WebResult(partName = "return")
+    @Action(input = "http://sender.server.dobrodey.ru/RouterSenderService/getUserNamesByRoleRequest", output = "http://sender.server.dobrodey.ru/RouterSenderService/getUserNamesByRoleResponse")
+    public ListOfString getUserNamesByRole(
+        @WebParam(name = "arg0", partName = "arg0")
+        String arg0);
+
+    /**
+     * 
+     * @param arg1
+     * @param arg0
+     * @throws IOException_Exception
+     */
+    @WebMethod
+    @Action(input = "http://sender.server.dobrodey.ru/RouterSenderService/pdfRequest", output = "http://sender.server.dobrodey.ru/RouterSenderService/pdfResponse", fault = {
+        @FaultAction(className = IOException_Exception.class, value = "http://sender.server.dobrodey.ru/RouterSenderService/pdf/Fault/IOException")
+    })
+    public void pdf(
+        @WebParam(name = "arg0", partName = "arg0")
+        byte[] arg0,
+        @WebParam(name = "arg1", partName = "arg1")
+        ListOfString arg1)
+        throws IOException_Exception
+    ;
 
 }

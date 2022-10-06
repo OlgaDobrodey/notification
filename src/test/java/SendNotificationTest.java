@@ -1,5 +1,5 @@
 
-import org.junit.Assert;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -7,6 +7,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 import services.Router;
 
+import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +22,9 @@ public class SendNotificationTest {
 
     @InjectMocks
     SendNotification sendNotification = new SendNotification();
+
+    public SendNotificationTest()  {
+    }
 
     @Test
     public void execute() {
