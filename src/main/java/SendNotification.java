@@ -7,7 +7,6 @@ import java.util.List;
 
 public class SendNotification implements Job {
 
-
     private Router router;
 
     public SendNotification() {

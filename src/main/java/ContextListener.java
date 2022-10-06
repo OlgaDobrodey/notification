@@ -1,5 +1,4 @@
-import com.example.generate.RouterSenderService;
-import com.example.generate.RouterSenderServiceImplService;
+
 import org.quartz.*;
 import org.quartz.impl.StdSchedulerFactory;
 
@@ -14,7 +13,6 @@ import static org.quartz.DateBuilder.dateOf;
 public class ContextListener implements ServletContextListener {
 
     Scheduler sch;
-
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         final ServletContext servletContext = sce.getServletContext();
