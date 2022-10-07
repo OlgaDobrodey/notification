@@ -15,15 +15,12 @@
     </properties>
 
     <dependencies>
-
         <!-- https://mvnrepository.com/artifact/org.quartz-scheduler/quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>
             <artifactId>quartz</artifactId>
             <version>2.3.2</version>
         </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -31,38 +28,30 @@
             <version>2.0.3</version>
         </dependency>
 
-
         <!-- https://mvnrepository.com/artifact/javax.xml.soap/javax.xml.soap-api -->
         <dependency>
             <groupId>javax.xml.soap</groupId>
             <artifactId>javax.xml.soap-api</artifactId>
             <version>1.4.0</version>
         </dependency>
-
-
         <!-- https://mvnrepository.com/artifact/javax.xml.ws/jaxws-api -->
         <dependency>
-            <groupId>javax.xml.ws</groupId>
-            <artifactId>jaxws-api</artifactId>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-ri</artifactId>
             <version>2.3.1</version>
+            <type>pom</type>
         </dependency>
-
-
         <dependency>
-            <groupId>com.sun.xml.messaging.saaj</groupId>
-            <artifactId>saaj-impl</artifactId>
-            <version>2.0.1</version>
-            <scope>compile</scope>
+            <groupId>com.sun.xml.ws</groupId>
+            <artifactId>jaxws-rt</artifactId>
+            <version>2.3.5</version>
         </dependency>
-
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>javax.servlet-api</artifactId>
             <version>4.0.1</version>
             <scope>provided</scope>
         </dependency>
-
-
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
@@ -78,37 +67,33 @@
             <scope>test</scope>
         </dependency>
 
-
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-ri</artifactId>
-            <version>2.3.2</version>
-            <type>pom</type>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.ws</groupId>
-            <artifactId>jaxws-rt</artifactId>
-            <version>2.3.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.sun.xml.messaging.saaj</groupId>
-            <artifactId>saaj-impl</artifactId>
-            <version>1.5.1</version>
-        </dependency>
-
-
     </dependencies>
     <build>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                                        <url>http://localhost:8080/manager/text</url>
+<!--                    <url>http://tomcat.dobrodey.net:8080/manager/text</url>-->
+                    <username>admin</username>
+                    <password>aston</password>
+                    <path>/notificate</path>
+                </configuration>
+            </plugin>
             <plugin>
                 <groupId>com.sun.xml.ws</groupId>
                 <artifactId>jaxws-maven-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
                     <wsdlUrls>
-                        <wsdlUrl>http://localhost:8082/ws/router/first?wsdl</wsdlUrl>
+                        <wsdlUrl>http://localhost:8082/ws/router?wsdl</wsdlUrl>
                         <!--<wsdlUrl>http://http://185.46.11.164:8080/ws/router/first?wsdl</wsdlUrl>-->
                     </wsdlUrls>
                     <keep>true</keep>
